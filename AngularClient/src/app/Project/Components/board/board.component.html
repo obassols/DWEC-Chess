@@ -1,0 +1,8 @@
+<h2>TEST</h2>
+<table class="chess">
+  <tr *ngFor="let row of board.positions">
+    <td *ngFor="let cell of row" [class]="isPiece(cell) ? 'piece' : ''" >
+        <img *ngIf="isPiece(cell)" [src]="'/assets/' + getCellValue(cell)" />
+      <p *ngIf="!isPiece(cell) && cell != null" class="border">{{ getCellValue(cell) }}</p>
+  </tr>
+</table>
