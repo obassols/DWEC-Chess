@@ -61,9 +61,6 @@ export class BoardComponent implements OnInit {
             this.blackDeadPieces.push(curr.piece as Piece);
             console.log(this.blackDeadPieces);
           }
-          console.log(curr);
-          curr.setPiece(prev.piece as Piece);
-          prev.removePiece();
         }
       }
       curr.setPiece(prev.piece as Piece);

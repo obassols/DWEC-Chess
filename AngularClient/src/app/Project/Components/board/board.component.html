@@ -1,4 +1,9 @@
 <h2>TEST</h2>
+<table>
+  <td *ngFor="let piece of whiteDeadPieces">
+    <img [src]="'/assets/' + piece.image"/>
+  </td>
+</table>
 <table class="chess" cdkDropListGroup>
   <tr *ngFor="let row of board.cells, index as i">
     <td *ngFor="let cell of row, index as n" [ngClass]="cell.label ? 'disable':''"
@@ -9,4 +14,9 @@
       </div>
       <p *ngIf="cell.label" class="border">{{ cell.label }}</p>
   </tr>
+</table>
+<table>
+  <td *ngFor="let piece of blackDeadPieces">
+    <img [src]="'/assets/' + piece.image" />
+  </td>
 </table>
