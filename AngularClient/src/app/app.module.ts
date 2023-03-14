@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { BoardComponent } from './Project/Components/board/board.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateTeamComponent } from './Project/Components/create-team/create-team.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CreateTeamComponent } from './Project/Components/create-team/create-tea
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

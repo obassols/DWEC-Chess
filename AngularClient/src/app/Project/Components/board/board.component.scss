@@ -1,7 +1,6 @@
 table {
   border-collapse: collapse;
 }
-
 td {
   padding: 5px;
   width: 50px;
@@ -15,12 +14,6 @@ img {
 }
 
 .chess {
-  .piece {
-    :first-child {
-      background: none !important;
-    }
-  }
-
   tr:first-child,
   tr:last-child {
     td {
@@ -50,8 +43,8 @@ img {
     }
   }
 
-  :nth-of-type(even) {
-    :nth-of-type(odd) {
+  tr:nth-of-type(even) {
+    td:nth-of-type(odd) {
       background-color: #66443A;
     }
 
@@ -60,13 +53,17 @@ img {
     }
   }
 
-  :nth-of-type(odd) {
-    :nth-of-type(odd) {
+  tr:nth-of-type(odd) {
+    td:nth-of-type(odd) {
       background-color: #F5E6BF;
     }
 
-    :nth-of-type(even) {
+    td:nth-of-type(even) {
       background-color: #66443A;
     }
   }
+}
+
+.disable {
+  pointer-events: none;
 }

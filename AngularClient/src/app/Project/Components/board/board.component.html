@@ -1,8 +1,12 @@
 <h2>TEST</h2>
-<table class="chess">
-  <tr *ngFor="let row of board.positions">
-    <td *ngFor="let cell of row" [class]="isPiece(cell) ? 'piece' : ''" >
-        <img *ngIf="isPiece(cell)" [src]="'/assets/' + getCellValue(cell)" />
-      <p *ngIf="!isPiece(cell) && cell != null" class="border">{{ getCellValue(cell) }}</p>
+<table class="chess" cdkDropListGroup>
+  <tr *ngFor="let row of board.cells, index as i">
+    <td *ngFor="let cell of row, index as n" [ngClass]="cell.label ? 'disable':''"
+      [cdkDropListData]="cell"
+      (cdkDropListDropped)="drop($event)" cdkDropList>
+      <div *ngIf="cell.hasPiece" cdkDrag>
+        <img [src]="'/assets/' + cell.piece?.image" cdkDragBoundary=".chess" cdkDrag/>
+      </div>
+      <p *ngIf="cell.label" class="border">{{ cell.label }}</p>
   </tr>
 </table>
