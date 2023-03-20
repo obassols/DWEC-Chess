@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Board } from '../../Models/Board';
 import { Piece } from '../../Models/Piece';
 import { Player } from '../../Models/Player';
 import { Team } from '../../Models/Team';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Cell } from '../../Models/Cell';
 
 @Component({
@@ -12,6 +11,8 @@ import { Cell } from '../../Models/Cell';
   styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements OnInit {
+
+  @Input() reverse?: boolean;
 
   board!: Board;
   whiteDeadPieces: Array<Piece> = [];
@@ -25,14 +26,11 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
-
-  isCell(cell: Cell | string): boolean {
-    return cell instanceof Cell;
-  }
-
-  getCell(cell: Cell | string): Cell {
-    return cell as Cell;
+    if (this.reverse) {
+      this.board.cells.reverse();
+      this.board.cells[1].reverse();
+      this.board.cells[8].reverse();
+    }
   }
 
   drop(event: any): void {

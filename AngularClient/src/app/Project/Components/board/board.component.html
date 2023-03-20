@@ -1,10 +1,14 @@
-<h2>TEST</h2>
-<table>
+<table *ngIf="whiteDeadPieces.length > 0 && !reverse" class="dead">
   <td *ngFor="let piece of whiteDeadPieces">
     <img [src]="'/assets/' + piece.image"/>
   </td>
 </table>
-<table class="chess" cdkDropListGroup>
+<table *ngIf="blackDeadPieces.length > 0 && reverse" class="dead">
+  <td *ngFor="let piece of blackDeadPieces">
+    <img [src]="'/assets/' + piece.image" />
+  </td>
+</table>
+<table class="chess" [ngClass]="reverse ? 'reverse' : ''" cdkDropListGroup>
   <tr *ngFor="let row of board.cells, index as i">
     <td *ngFor="let cell of row, index as n" [ngClass]="cell.label ? 'disable':''"
       [cdkDropListData]="cell"
@@ -15,8 +19,13 @@
       <p *ngIf="cell.label" class="border">{{ cell.label }}</p>
   </tr>
 </table>
-<table>
+<table *ngIf="blackDeadPieces.length > 0 && !reverse" class="dead">
   <td *ngFor="let piece of blackDeadPieces">
+    <img [src]="'/assets/' + piece.image" />
+  </td>
+</table>
+<table *ngIf="whiteDeadPieces.length > 0 && reverse" class="dead">
+  <td *ngFor="let piece of whiteDeadPieces">
     <img [src]="'/assets/' + piece.image" />
   </td>
 </table>

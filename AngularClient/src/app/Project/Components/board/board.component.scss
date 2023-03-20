@@ -14,6 +14,10 @@ img {
 }
 
 .chess {
+  margin-left: 2%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+
   tr:first-child,
   tr:last-child {
     td {
@@ -66,4 +70,11 @@ img {
 
 .disable {
   pointer-events: none;
+}
+
+.dead {
+  margin-left: 2%;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid red;
 }
