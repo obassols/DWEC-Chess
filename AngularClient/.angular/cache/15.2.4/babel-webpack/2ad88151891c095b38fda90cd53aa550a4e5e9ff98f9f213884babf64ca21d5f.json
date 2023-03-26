@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Piece {\n  constructor(name, color) {\n    this.name = name;\n    this.color = color;\n    this.image = this.name + this.color + '.png';\n  }\n}\n// ELS EQUIPS S HAN DE GESTIONAR DESDE EL SERVIDOR","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
