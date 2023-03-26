@@ -1,1 +1,0 @@
-{"ast":null,"code":"export class Team {\n  constructor(name, players) {\n    this.players = new Array(2);\n    this.name = name;\n    this.players = players ? players : this.players;\n  }\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

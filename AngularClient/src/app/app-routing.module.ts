@@ -4,8 +4,8 @@ import { CreateTeamComponent } from './Project/Components/create-team/create-tea
 import { PlaygroundComponent } from './Project/Components/playground/playground.component';
 
 const routes: Routes = [
-  { path: '/create-team', component: CreateTeamComponent },
-  { path: '/playground', component: PlaygroundComponent}
+  { path: 'create-team', component: CreateTeamComponent },
+  { path: 'playground', component: PlaygroundComponent}
 ];
 
 @NgModule({

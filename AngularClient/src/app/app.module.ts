@@ -5,8 +5,8 @@ import { AppComponent } from './app.component';
 import { BoardComponent } from './Project/Components/board/board.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateTeamComponent } from './Project/Components/create-team/create-team.component';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PlaygroundComponent } from './Project/Components/playground/playground.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [

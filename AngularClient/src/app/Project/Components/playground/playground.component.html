@@ -1,4 +1,5 @@
 <div *ngIf="game?.playing" class="flex">
-  <app-board></app-board>
-  <app-board [reverse]="true"></app-board>
+  <app-board [boardId]="0"></app-board>
+  <app-board [boardId]="1" [reverse]="true"></app-board>
 </div>
+<router-outlet></router-outlet>

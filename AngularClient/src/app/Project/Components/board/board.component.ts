@@ -4,6 +4,7 @@ import { Piece } from '../../Models/Piece';
 import { Player } from '../../Models/Player';
 import { Team } from '../../Models/Team';
 import { Cell } from '../../Models/Cell';
+import { SocketService } from '../../Services/socket.service';
 
 @Component({
   selector: 'app-board',
@@ -13,10 +14,10 @@ import { Cell } from '../../Models/Cell';
 export class BoardComponent implements OnInit {
 
   @Input() reverse?: boolean;
+  @Input() boardId: number = 0;
+  board: Board = this.socket.boards?[this.boardId] as unknown as Board : new Board(this.boardId, new Player('jugador1', new Team('team1')), new Player('jugador2', new Team('team2')));
 
-  board!: Board;
-
-  constructor() {
+  constructor(private socket: SocketService) {
     const team1 = new Team('team1');
     const team2 = new Team('team2');
     this.board = new Board(1, new Player('jugador1', team1), new Player('jugador2', team2));

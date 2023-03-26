@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
+import { Board } from '../Models/Board';
 import { Game } from '../Models/Game';
 
 @Injectable({
@@ -7,9 +8,14 @@ import { Game } from '../Models/Game';
 })
 export class SocketService {
 
-  game = this.socket.fromEvent<Game>('game');
+  game?: Game;
+  boards?: Board[] = this.game?.boards;
 
-  constructor(private socket: Socket) {}
+  constructor(private socket: Socket) {
+    this.socket.on('game', (game: Game) => {
+      this.game = game;
+    });
+  }
 
   addTeam(team: any): void {
     this.socket.emit('addTeam', team);

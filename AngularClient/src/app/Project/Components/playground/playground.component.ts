@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Game } from '../../Models/Game';
 import { SocketService } from '../../Services/socket.service';
 
 @Component({
@@ -8,12 +9,9 @@ import { SocketService } from '../../Services/socket.service';
 })
 export class PlaygroundComponent implements OnInit {
 
-  game: any;
-  constructor(private socket: SocketService) {
-    this.socket.game.subscribe((game) => {
-      this.game = game;
-    });
-  }
+  game?: Game = this.socket.game;
+
+  constructor(private socket: SocketService) {}
 
   ngOnInit(): void {
   }
