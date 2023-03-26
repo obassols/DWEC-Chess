@@ -1,10 +1,10 @@
-<table *ngIf="whiteDeadPieces.length > 0 && !reverse" class="dead">
-  <td *ngFor="let piece of whiteDeadPieces">
+<table *ngIf="board.whiteDeadPieces.length > 0 && !reverse" class="dead">
+  <td *ngFor="let piece of board.whiteDeadPieces">
     <img [src]="'/assets/' + piece.image"/>
   </td>
 </table>
-<table *ngIf="blackDeadPieces.length > 0 && reverse" class="dead">
-  <td *ngFor="let piece of blackDeadPieces">
+<table *ngIf="board.blackDeadPieces.length > 0 && reverse" class="dead">
+  <td *ngFor="let piece of board.blackDeadPieces">
     <img [src]="'/assets/' + piece.image" />
   </td>
 </table>
@@ -19,13 +19,13 @@
       <p *ngIf="cell.label" class="border">{{ cell.label }}</p>
   </tr>
 </table>
-<table *ngIf="blackDeadPieces.length > 0 && !reverse" class="dead">
-  <td *ngFor="let piece of blackDeadPieces">
+<table *ngIf="board.blackDeadPieces.length > 0 && !reverse" class="dead">
+  <td *ngFor="let piece of board.blackDeadPieces">
     <img [src]="'/assets/' + piece.image" />
   </td>
 </table>
-<table *ngIf="whiteDeadPieces.length > 0 && reverse" class="dead">
-  <td *ngFor="let piece of whiteDeadPieces">
+<table *ngIf="board.whiteDeadPieces.length > 0 && reverse" class="dead">
+  <td *ngFor="let piece of board.whiteDeadPieces">
     <img [src]="'/assets/' + piece.image" />
   </td>
 </table>

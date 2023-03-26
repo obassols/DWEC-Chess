@@ -9,9 +9,13 @@ export class Board {
   cells: Array<Array<Cell>>;
   player1: Player;
   player2: Player;
+  whiteDeadPieces: Array<Piece> = [];
+  blackDeadPieces: Array<Piece> = [];
+  turn: string;
 
   constructor(id: number, player1: Player, player2: Player) {
     this.id = id;
+    this.turn = 'White';
     this.player1 = player1;
     this.player1.color = 'White';
     this.player2 = player2;

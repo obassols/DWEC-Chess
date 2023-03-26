@@ -15,8 +15,6 @@ export class BoardComponent implements OnInit {
   @Input() reverse?: boolean;
 
   board!: Board;
-  whiteDeadPieces: Array<Piece> = [];
-  blackDeadPieces: Array<Piece> = [];
 
   constructor() {
     const team1 = new Team('team1');
@@ -35,7 +33,7 @@ export class BoardComponent implements OnInit {
 
   drop(event: any): void {
     console.log(event);
-    const prev: Cell  = event.previousContainer.data;
+    const prev: Cell = event.previousContainer.data;
     const curr: Cell = event.container.data;
     if (event.previousContainer === event.container) {
       console.log('Same container');
@@ -51,13 +49,13 @@ export class BoardComponent implements OnInit {
           if (curr.piece?.color === 'White') {
             console.log('Killing White Piece');
 
-            this.whiteDeadPieces.push(curr.piece as Piece);
-            console.log(this.whiteDeadPieces);
+            this.board.whiteDeadPieces.push(curr.piece as Piece);
+            console.log(this.board.whiteDeadPieces);
           } else if (curr.piece?.color === 'Black') {
             console.log('Killing Black Piece');
 
-            this.blackDeadPieces.push(curr.piece as Piece);
-            console.log(this.blackDeadPieces);
+            this.board.blackDeadPieces.push(curr.piece as Piece);
+            console.log(this.board.blackDeadPieces);
           }
         }
       }
@@ -66,4 +64,25 @@ export class BoardComponent implements OnInit {
     }
   }
 
+  move(from: any, to: any): void {
+    const prev: Cell = from;
+    const curr: Cell = to;
+    console.log('Moving piece');
+    if (curr.hasPiece) {
+      console.log('Cell has piece');
+      if (curr.piece?.color === 'White') {
+        console.log('Killing White Piece');
+
+        this.board.whiteDeadPieces.push(curr.piece as Piece);
+        console.log(this.board.whiteDeadPieces);
+      } else if (curr.piece?.color === 'Black') {
+        console.log('Killing Black Piece');
+
+        this.board.blackDeadPieces.push(curr.piece as Piece);
+        console.log(this.board.blackDeadPieces);
+      }
+    }
+    curr.setPiece(prev.piece as Piece);
+    prev.removePiece();
+  }
 }
