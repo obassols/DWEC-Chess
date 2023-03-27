@@ -12,6 +12,7 @@ export class SocketService {
 
   gameObservable: Observable<Game> = this.socket.fromEvent('game');
   playerObservable: Observable<Player> = this.socket.fromEvent('player');
+  moveObservable: Observable<any> = this.socket.fromEvent('move');
   game: Game = new Game(new Team('team1'), new Team('team2'));
   player?: Player;
 

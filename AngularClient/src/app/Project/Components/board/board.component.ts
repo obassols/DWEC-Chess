@@ -23,6 +23,14 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.socket.moveObservable.subscribe(move => {
+      if (move.boardId === this.board.id) {
+        const prev = this.board.cells[move.from.row][move.from.col];
+        const curr = this.board.cells[move.to.row][move.to.col];
+        this.move(prev, curr);
+      }
+    });
+
     if (this.reverse) {
       this.board.cells.reverse();
       this.board.cells[1].reverse();
