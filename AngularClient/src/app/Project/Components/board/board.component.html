@@ -1,31 +1,42 @@
-<table *ngIf="board.whiteDeadPieces.length > 0 && !reverse" class="dead">
-  <td *ngFor="let piece of board.whiteDeadPieces">
-    <img [src]="'/assets/' + piece.image"/>
-  </td>
-</table>
-<table *ngIf="board.blackDeadPieces.length > 0 && reverse" class="dead">
-  <td *ngFor="let piece of board.blackDeadPieces">
-    <img [src]="'/assets/' + piece.image" />
-  </td>
-</table>
+<div *ngIf="!reverse">
+  <h3>Player: {{ board.player1.name }}</h3>
+  <table *ngIf="board.whiteDeadPieces.length > 0" class="dead">
+    <td *ngFor="let piece of board.whiteDeadPieces">
+      <img [src]="'/assets/' + piece.image" />
+    </td>
+  </table>
+</div>
+<div *ngIf="reverse">
+  <h3>Player: {{ board.player2.name }}</h3>
+  <table *ngIf="board.blackDeadPieces.length > 0" class="dead">
+    <td *ngFor="let piece of board.blackDeadPieces">
+      <img [src]="'/assets/' + piece.image" />
+    </td>
+  </table>
+</div>
 <table class="chess" [ngClass]="reverse ? 'reverse' : ''" cdkDropListGroup>
   <tr *ngFor="let row of board.cells, index as i">
-    <td *ngFor="let cell of row, index as n" [ngClass]="cell.label ? 'disable':''"
-      [cdkDropListData]="cell"
+    <td *ngFor="let cell of row, index as n" [ngClass]="cell.label ? 'disable':''" [cdkDropListData]="cell"
       (cdkDropListDropped)="drop($event)" cdkDropList>
       <div *ngIf="cell.hasPiece" cdkDrag>
-        <img [src]="'/assets/' + cell.piece?.image" cdkDragBoundary=".chess" cdkDrag/>
+        <img [src]="'/assets/' + cell.piece?.image" cdkDragBoundary=".chess" cdkDrag />
       </div>
       <p *ngIf="cell.label" class="border">{{ cell.label }}</p>
   </tr>
 </table>
-<table *ngIf="board.blackDeadPieces.length > 0 && !reverse" class="dead">
-  <td *ngFor="let piece of board.blackDeadPieces">
-    <img [src]="'/assets/' + piece.image" />
-  </td>
-</table>
-<table *ngIf="board.whiteDeadPieces.length > 0 && reverse" class="dead">
-  <td *ngFor="let piece of board.whiteDeadPieces">
-    <img [src]="'/assets/' + piece.image" />
-  </td>
-</table>
+<div *ngIf="!reverse">
+  <h3>Player: {{ board.player2.name }}</h3>
+  <table *ngIf="board.blackDeadPieces.length > 0" class="dead">
+    <td *ngFor="let piece of board.blackDeadPieces">
+      <img [src]="'/assets/' + piece.image" />
+    </td>
+  </table>
+</div>
+<div *ngIf="reverse">
+  <h3>Player: {{ board.player1.name }}</h3>
+  <table *ngIf="board.whiteDeadPieces.length > 0" class="dead">
+    <td *ngFor="let piece of board.whiteDeadPieces">
+      <img [src]="'/assets/' + piece.image" />
+    </td>
+  </table>
+</div>
