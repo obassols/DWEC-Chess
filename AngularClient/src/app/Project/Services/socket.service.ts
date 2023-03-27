@@ -1,28 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
-import { Board } from '../Models/Board';
+import { Observable } from 'rxjs';
 import { Game } from '../Models/Game';
+import { Player } from '../Models/Player';
+import { Team } from '../Models/Team';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SocketService {
 
-  game?: Game;
-  boards?: Board[] = this.game?.boards;
+  game: Observable<Game> = this.socket.fromEvent('game');
+  player: Observable<Player> = this.socket.fromEvent('player');
 
   constructor(private socket: Socket) {
-    this.socket.on('game', (game: Game) => {
-      this.game = game;
-    });
   }
 
-  addTeam(team: any): void {
+  addTeam(team: Team): void {
+    console.log(team);
     this.socket.emit('addTeam', team);
   }
 
   play(): void {
     this.socket.emit('play');
+    console.log('play');
   }
 
   move(move: any): void {
