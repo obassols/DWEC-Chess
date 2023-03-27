@@ -2,6 +2,7 @@ import { Board } from './Board';
 import { Team } from './Team';
 
 export class Game {
+  id: string = '';
   teams = new Array<Team>();
   boards = new Array<Board>();
   playing?: boolean;

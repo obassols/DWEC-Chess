@@ -10,10 +10,18 @@ import { Team } from '../Models/Team';
 })
 export class SocketService {
 
-  game: Observable<Game> = this.socket.fromEvent('game');
-  player: Observable<Player> = this.socket.fromEvent('player');
+  gameObservable: Observable<Game> = this.socket.fromEvent('game');
+  playerObservable: Observable<Player> = this.socket.fromEvent('player');
+  game: Game = new Game(new Team('team1'), new Team('team2'));
+  player?: Player;
 
   constructor(private socket: Socket) {
+    this.gameObservable.subscribe(game => {
+      this.game = game;
+    });
+    this.playerObservable.subscribe(player => {
+      this.player = player;
+    });
   }
 
   addTeam(team: Team): void {
@@ -26,7 +34,14 @@ export class SocketService {
     console.log('play');
   }
 
-  move(move: any): void {
+  move(prev: any, curr: any): void {
+    const move = {
+      gameId: this.game?.id,
+      boardId: this.game?.boards[0].id,
+      playerId: this.player?.name,
+      from: prev,
+      to: curr
+    };
     this.socket.emit('move', move);
   }
 }

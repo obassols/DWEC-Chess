@@ -2,7 +2,7 @@ import { Team } from './Team';
 
 export class Player {
   // Do the variables for a chess player
-  name: string;
+  name?: string;
   color?: string;
   connected?: string;
 
