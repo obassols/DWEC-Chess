@@ -1,3 +1,7 @@
+<button *ngIf="!game" (click)="play()">Play</button>
+<div *ngIf="player">
+  <h1>Player: {{player.name}}</h1>
+</div>
 <div *ngIf="game?.playing" class="flex">
   <app-board [boardId]="0"></app-board>
   <app-board [boardId]="1" [reverse]="true"></app-board>

@@ -1,1 +1,10 @@
-<p>create-team works!</p>
+<form>
+  <label for="teamName">Team name:</label><br>
+  <input [(ngModel)]="teamName" type="text" id="teamName" name="teamName"><br>
+  <label for="player1">First player:</label><br>
+  <input [(ngModel)]="player1Name" type="text" id="player1" name="player1"><br>
+  <label for="player2">Second player:</label><br>
+  <input [(ngModel)]="player2Name" type="text" id="player2" name="player2">
+</form>
+<br>
+<button (click)="createTeam()">Create team</button>

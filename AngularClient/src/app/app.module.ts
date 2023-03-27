@@ -7,6 +7,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateTeamComponent } from './Project/Components/create-team/create-team.component';
 import { PlaygroundComponent } from './Project/Components/playground/playground.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+import { FormsModule } from '@angular/forms';
+
+const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
 
 @NgModule({
   declarations: [
@@ -20,6 +24,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     AppRoutingModule,
     NoopAnimationsModule,
     DragDropModule,
+    SocketIoModule.forRoot(config),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

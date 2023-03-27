@@ -15,7 +15,7 @@ export class BoardComponent implements OnInit {
 
   @Input() reverse?: boolean;
   @Input() boardId: number = 0;
-  board: Board = this.socket.boards?[this.boardId] as unknown as Board : new Board(this.boardId, new Player('jugador1', new Team('team1')), new Player('jugador2', new Team('team2')));
+  board: Board = new Board(0, new Player('jugador1'), new Player('jugador2'));
 
   constructor(private socket: SocketService) {
     const team1 = new Team('team1');
@@ -25,6 +25,7 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.socket.game.subscribe(game => this.board = game.boards[this.boardId]);
     if (this.reverse) {
       this.board.cells.reverse();
       this.board.cells[1].reverse();
